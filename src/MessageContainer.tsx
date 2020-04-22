@@ -79,6 +79,7 @@ export interface MessageContainerProps<TMessage extends IMessage> {
   scrollToBottomOffset?: number
   forwardRef?: RefObject<FlatList<IMessage>>
   renderChatEmpty?(): React.ReactNode
+  renderHeader?(props: MessageContainerProps<TMessage>): React.ReactNode
   renderFooter?(props: MessageContainerProps<TMessage>): React.ReactNode
   renderMessage?(props: Message['props']): React.ReactNode
   renderLoadEarlier?(props: LoadEarlier['props']): React.ReactNode
@@ -321,9 +322,21 @@ export default class MessageContainer<
     return <View style={styles.container} />
   }
 
-  renderHeaderWrapper = () => (
-    <View style={styles.headerWrapper}>{this.renderLoadEarlier()}</View>
-  )
+  renderFooter = () => {
+    if (this.props.renderFooter) {
+      return this.props.renderFooter(this.props)
+    }
+
+    return this.renderTypingIndicator()
+  }
+
+  renderHeaderWrapper = () => {
+    if (this.props.renderHeader) {
+      return this.props.renderHeader(this.props)
+    } else {
+      return <View style={styles.headerWrapper}>{this.renderLoadEarlier()}</View>
+    }
+  }
 
   renderScrollBottomComponent() {
     const { scrollToBottomComponent } = this.props
