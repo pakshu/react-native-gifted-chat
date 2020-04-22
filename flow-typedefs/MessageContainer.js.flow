@@ -18,6 +18,7 @@ export type MessageContainerProps<TMessage: IMessage = IMessage> = $ReadOnly<{|
   extraData?: any,
   scrollToBottomOffset?: number,
   forwardRef?: React.Ref<typeof FlatList>,
+  renderHeader?: (MessageContainerProps<TMessage>) => React.Node,
   renderFooter?: (MessageContainerProps<TMessage>) => React.Node,
   renderMessage?: (MessageProps<TMessage>) => React.Node,
   renderLoadEarlier?: LoadEarlierProps => React.Node,

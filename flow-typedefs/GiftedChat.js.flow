@@ -99,6 +99,7 @@ export type GiftedChatProps<TMessage: IMessage = IMessage> = $ReadOnly<{|
   renderCustomView?: (BubbleProps<TMessage>) => React.Node,
   renderDay?: (DayProps<TMessage>) => React.Node,
   renderTime?: (TimeProps<TMessage>) => React.Node,
+  renderHeader?: () => React.Node,
   renderFooter?: () => React.Node,
   renderChatFooter?: () => React.Node,
   renderInputToolbar?: InputToolbarProps => React.Node,
