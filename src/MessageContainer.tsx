@@ -322,14 +322,6 @@ export default class MessageContainer<
     return <View style={styles.container} />
   }
 
-  renderFooter = () => {
-    if (this.props.renderFooter) {
-      return this.props.renderFooter(this.props)
-    }
-
-    return this.renderTypingIndicator()
-  }
-
   renderHeaderWrapper = () => {
     if (this.props.renderHeader) {
       return this.props.renderHeader(this.props)
